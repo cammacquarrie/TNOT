@@ -3,8 +3,10 @@ import BuyOnAmazonSidebar from "@/app/components/toys/BuyOnAmazonSidebar";
 
 import apiService from "@/app/services/apiService";
 
-const ToyDetailPage = async ({params}: { params: {id: string}}) => {
-    const toy = await apiService.get(`/api/toys/${params.id}`)
+type Params = Promise<{ id: string}>
+
+const ToyDetailPage = async ({params}: { params: Params}) => {
+    const toy = await apiService.get(`/api/toys/${params}`)
 
     return (
         <main className="max-w-[1500px] mx-auto px-6 pb-6">
